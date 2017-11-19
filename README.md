@@ -6,7 +6,7 @@ Heavily based off the great Github tutorial on [building CI servers](https://dev
 ## Setup
 [Get Ruby!](https://www.ruby-lang.org/en/documentation/installation/)
 ```
-gem install bundler rake rack
+gem install bundler
 bundle install
 ```
 ## Usage
@@ -21,6 +21,11 @@ rackup config.ru
 Put it online, or [use ngrok](https://ngrok.com/) to get online.
 
 In your Github repo, [add a webhook](https://developer.github.com/webhooks/creating/#setting-up-a-webhook) to send events about [Pull Requests](https://developer.github.com/v3/activity/events/types/#pullrequestevent).
-
+## Deployment
+To run things with local gems, use
+```
+bundle install --path localgems
+bundle exec rackup config.ru
+```
 ## Help
 Make an issue, open a PR, or ping me directly at marwahaha@berkeley.edu
