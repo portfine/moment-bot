@@ -12,6 +12,10 @@ class CITutorial < Sinatra::Base
     @client ||= Octokit::Client.new(:access_token => ACCESS_TOKEN)
   end
 
+  get '/' do
+    "PR Title Check: source at https://github.com/marwahaha/pr-title-check"
+  end
+
   post '/event_handler' do
     @payload = JSON.parse(params[:payload])
 
