@@ -2,7 +2,7 @@ require 'sinatra/base'
 require 'json'
 require 'octokit'
 
-TITLE_REGEX = Regexp.new('\A\[(bugfix|feature|critical|new locale|misc|tests|pkg)\] ')
+TITLE_REGEX = Regexp.new('\A\[(bugfix|feature|critical|(new )?locale|misc|tests|pkg)\] ')
 class CITutorial < Sinatra::Base
 
   # !!! DO NOT EVER USE HARD-CODED VALUES IN A REAL APP !!!
@@ -34,7 +34,7 @@ class CITutorial < Sinatra::Base
         @client.create_status(pull_request['base']['repo']['full_name'], pull_request['head']['sha'], 'success', options={:context => "Title", :description => "Your title looks great!"})
       else
         puts "PR \##{pull_request['number']}'s title doesn't pass: #{pull_request['title']}"
-        @client.create_status(pull_request['base']['repo']['full_name'], pull_request['head']['sha'], 'error', options={:context => "Title", :description => "Start with [bugfix]/[feature]/[critical]/[new locale]/[misc]/[tests]/[pkg]."})
+        @client.create_status(pull_request['base']['repo']['full_name'], pull_request['head']['sha'], 'error', options={:context => "Title", :description => "Start with [bugfix]/[feature]/[critical]/[(new )?locale]/[misc]/[tests]/[pkg]."})
       end
       puts "Pull request \##{pull_request['number']} processed!"
     end
