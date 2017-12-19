@@ -7,13 +7,13 @@ class CITutorial < Sinatra::Base
 
   # !!! DO NOT EVER USE HARD-CODED VALUES IN A REAL APP !!!
   # Instead, set and test environment variables, like below
-  ACCESS_TOKEN = ENV['KUNAL_PERSONAL_GITHUB_TOKEN']
+  ACCESS_TOKEN = ENV['MY_PERSONAL_GITHUB_TOKEN']
   before do
     @client ||= Octokit::Client.new(:access_token => ACCESS_TOKEN)
   end
 
   get '/' do
-    "PR Title Check: source at https://github.com/marwahaha/pr-title-check"
+    "moment-bot: source at https://github.com/marwahaha/moment-bot"
   end
 
   post '/event_handler' do
@@ -28,6 +28,10 @@ class CITutorial < Sinatra::Base
   helpers do
     def process_pull_request(pull_request)
       puts "Processing pull request \##{pull_request['number']}: #{pull_request['title']}..."
+      check_pr_title(pull_request)
+    end
+
+    def check_pr_title(pull_request)
       @client.create_status(pull_request['base']['repo']['full_name'], pull_request['head']['sha'], 'pending', options={:context => "Title", :description => "Reading title..."})
       if TITLE_REGEX.match(pull_request['title'])
         puts "PR \##{pull_request['number']}'s title looks good: #{pull_request['title']}"

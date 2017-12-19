@@ -1,5 +1,5 @@
-# pr-title-check
-ruby CI server for Github PR titles
+# moment-bot
+ruby CI server for Moment.js on Github
 
 Heavily based off the great Github tutorial on [building CI servers](https://developer.github.com/v3/guides/building-a-ci-server/), and [its code](https://github.com/github/platform-samples/tree/master/api/ruby/building-a-ci-server).
 
@@ -12,7 +12,7 @@ bundle install
 ## Usage
 [Make a token](https://github.com/settings/tokens), and add it to your environment.
 ```
-KUNAL_PERSONAL_ACCESS_TOKEN=<my_new_token>
+MY_PERSONAL_ACCESS_TOKEN=<my_new_token>
 ```
 Run the server.
 ```
