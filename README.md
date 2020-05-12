@@ -12,11 +12,11 @@ bundle install
 ## Usage
 [Make a token](https://github.com/settings/tokens), and add it to your environment.
 ```
-MY_PERSONAL_ACCESS_TOKEN=<my_new_token>
+MY_PERSONAL_GITHUB_TOKEN=<my_new_token>
 ```
 Run the server.
 ```
-rackup config.ru
+bundle exec rackup config.ru
 ```
 Put it online, or [use ngrok](https://ngrok.com/) to get online.
 
