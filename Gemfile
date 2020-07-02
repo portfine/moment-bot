@@ -5,4 +5,4 @@ gem 'sinatra',     '~> 2.0'
 gem "json",        "~> 1.8"
 gem "shotgun"
 gem "octokit",     '~> 4'
-gem "rack",        '~> 2.2.2'
+gem "rack",        '~> 2.2.3'
